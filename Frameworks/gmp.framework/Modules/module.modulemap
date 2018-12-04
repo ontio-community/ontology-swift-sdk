@@ -1,4 +1,0 @@
-module GMP {
-  header "shim.h"
-  export *
-}

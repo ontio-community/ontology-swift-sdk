@@ -337,6 +337,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02C1D5E721AF1E98001C3AAD /* Build configuration list for PBXNativeTarget "OntSwift" */;
 			buildPhases = (
+				029ACAC321B6E31200FC656F /* Build Libraries */,
 				02C1D5CE21AF1E98001C3AAD /* Headers */,
 				02C1D5CF21AF1E98001C3AAD /* Sources */,
 				02C1D5D021AF1E98001C3AAD /* Frameworks */,
@@ -460,6 +461,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		029ACAC321B6E31200FC656F /* Build Libraries */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Libraries";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh \"$SRCROOT/scripts/frameworks/build_all.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
