@@ -1,0 +1,4 @@
+module Base58 {
+  header "shim.h"
+  export *
+}
