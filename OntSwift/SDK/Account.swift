@@ -102,7 +102,7 @@ public class Account: Encodable, Decodable {
     let encrypted = try PrivateKey(raw: Data(base64Encoded: keystore.key)!, algorithm: algo, parameters: parameters, scrypt: scrypt)
     return try from(encrypted: encrypted, label: keystore.label, pwd: pwd, addr: keystore.address, salt: keystore.salt)
   }
-  
+
   public static func from(keystore: String, pwd: String) throws -> Account {
     let keystore = try JSONDecoder().decode(Keystore.self, from: keystore.data(using: .utf8)!)
     return try from(keystore: keystore, pwd: pwd)

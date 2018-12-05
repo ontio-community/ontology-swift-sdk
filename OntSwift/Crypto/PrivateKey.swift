@@ -111,8 +111,8 @@ public class PrivateKey: Key, Encodable, Decodable {
     }
     return key
   }
-  
-  public func decrypt(keyphrase: String, addr: Address, salt: Data, params: ScryptParams? = nil) throws -> PrivateKey  {
+
+  public func decrypt(keyphrase: String, addr: Address, salt: Data, params: ScryptParams? = nil) throws -> PrivateKey {
     return try decrypt(keyphrase: keyphrase.data(using: .utf8)!, addr: addr, salt: salt, params: params)
   }
 
@@ -141,7 +141,7 @@ public class PrivateKey: Key, Encodable, Decodable {
     }
     return try PrivateKey(raw: data.subdata(in: 1 ..< 33))
   }
-  
+
   func forceScrypt(params: ScryptParams) {
     scrypt = params
   }
