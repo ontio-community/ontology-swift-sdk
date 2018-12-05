@@ -29,4 +29,11 @@ public final class Constant {
   public static let addrVersion: UInt8 = 0x17
 
   public static let defaultSm2Id = "1234567812345678".data(using: .utf8)!
+
+  public static let testNode = "polaris1.ont.io"
+  public static let httpWsPort = "20335"
+  
+  public static let testOntUrl = JSON([
+    "SOCKET_URL": "ws://\(testNode):\(httpWsPort)"
+  ])
 }

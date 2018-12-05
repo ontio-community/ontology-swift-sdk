@@ -36,6 +36,12 @@
 		028E93C621B7D002004B9F09 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93C521B7D002004B9F09 /* Wallet.swift */; };
 		028E93C821B7D898004B9F09 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93C721B7D898004B9F09 /* Date+ISO8601.swift */; };
 		028E93CA21B80498004B9F09 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93C921B80498004B9F09 /* WalletTests.swift */; };
+		028E93CD21B8392B004B9F09 /* WebsocketRpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93CC21B8392B004B9F09 /* WebsocketRpc.swift */; };
+		028E93CF21B8394A004B9F09 /* WebsocketRpcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93CE21B8394A004B9F09 /* WebsocketRpcTests.swift */; };
+		028E93E921B869F3004B9F09 /* SwiftWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93D121B8608A004B9F09 /* SwiftWebSocket.framework */; };
+		028E93EA21B869F3004B9F09 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93D021B8608A004B9F09 /* SwiftyJSON.framework */; };
+		028E93EC21B87426004B9F09 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93EB21B87426004B9F09 /* Promises.framework */; };
+		028E93EE21B87806004B9F09 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93ED21B87806004B9F09 /* FBLPromises.framework */; };
 		029ACAB021B4345700FC656F /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAAF21B4345700FC656F /* Signature.swift */; };
 		029ACAB221B637B900FC656F /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB121B637B900FC656F /* PublicKey.swift */; };
 		029ACAB421B63D9300FC656F /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB321B63D9300FC656F /* AES.swift */; };
@@ -125,6 +131,13 @@
 		028E93C521B7D002004B9F09 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		028E93C721B7D898004B9F09 /* Date+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
 		028E93C921B80498004B9F09 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		028E93CC21B8392B004B9F09 /* WebsocketRpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketRpc.swift; sourceTree = "<group>"; };
+		028E93CE21B8394A004B9F09 /* WebsocketRpcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketRpcTests.swift; sourceTree = "<group>"; };
+		028E93D021B8608A004B9F09 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		028E93D121B8608A004B9F09 /* SwiftWebSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftWebSocket.framework; path = Carthage/Build/iOS/SwiftWebSocket.framework; sourceTree = "<group>"; };
+		028E93D221B8608A004B9F09 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		028E93EB21B87426004B9F09 /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Promises.framework; path = Carthage/Build/iOS/Promises.framework; sourceTree = "<group>"; };
+		028E93ED21B87806004B9F09 /* FBLPromises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBLPromises.framework; path = Carthage/Build/iOS/FBLPromises.framework; sourceTree = "<group>"; };
 		029ACAAF21B4345700FC656F /* Signature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
 		029ACAB121B637B900FC656F /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		029ACAB321B63D9300FC656F /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
@@ -174,6 +187,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C1D5DD21AF1E98001C3AAD /* OntSwift.framework in Frameworks */,
+				028E93EC21B87426004B9F09 /* Promises.framework in Frameworks */,
+				028E93E921B869F3004B9F09 /* SwiftWebSocket.framework in Frameworks */,
+				028E93EA21B869F3004B9F09 /* SwiftyJSON.framework in Frameworks */,
+				028E93EE21B87806004B9F09 /* FBLPromises.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +208,14 @@
 				0202CEA321AF5787006D7C73 /* Info.plist */,
 			);
 			path = OntSwiftTestsHost;
+			sourceTree = "<group>";
+		};
+		028E93CB21B838FF004B9F09 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				028E93CC21B8392B004B9F09 /* WebsocketRpc.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		029ACAB721B671C700FC656F /* Common */ = {
@@ -258,6 +283,7 @@
 				029ACAB721B671C700FC656F /* Common */,
 				029ACABA21B681B200FC656F /* Core */,
 				02F9075821AFEF3900571663 /* Crypto */,
+				028E93CB21B838FF004B9F09 /* Network */,
 				02F9076321B0FB0C00571663 /* SDK */,
 				02C1D5D621AF1E98001C3AAD /* OntSwift.h */,
 				02C1D5D721AF1E98001C3AAD /* Info.plist */,
@@ -272,6 +298,7 @@
 				0228D1EA21B3ACFF00565F51 /* CryptoTests.swift */,
 				028E93C321B7CC95004B9F09 /* IdentityTests.swift */,
 				028E93C921B80498004B9F09 /* WalletTests.swift */,
+				028E93CE21B8394A004B9F09 /* WebsocketRpcTests.swift */,
 				02C1D5E321AF1E98001C3AAD /* Info.plist */,
 			);
 			path = OntSwiftTests;
@@ -280,6 +307,11 @@
 		02C1D5F121AF29EB001C3AAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				028E93ED21B87806004B9F09 /* FBLPromises.framework */,
+				028E93EB21B87426004B9F09 /* Promises.framework */,
+				028E93D221B8608A004B9F09 /* PromiseKit.framework */,
+				028E93D121B8608A004B9F09 /* SwiftWebSocket.framework */,
+				028E93D021B8608A004B9F09 /* SwiftyJSON.framework */,
 				0228D1E821B3A37100565F51 /* base58.framework */,
 				0228D1D221B2DEEB00565F51 /* gmp.framework */,
 				02A9921921B19EAE005CA392 /* scrypt.framework */,
@@ -478,12 +510,18 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftWebSocket.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Promises.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBLPromises.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftWebSocket.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Promises.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBLPromises.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -541,6 +579,7 @@
 				028E93C621B7D002004B9F09 /* Wallet.swift in Sources */,
 				028E93C821B7D898004B9F09 /* Date+ISO8601.swift in Sources */,
 				029ACAB221B637B900FC656F /* PublicKey.swift in Sources */,
+				028E93CD21B8392B004B9F09 /* WebsocketRpc.swift in Sources */,
 				0228D1D121B1C41E00565F51 /* BigInt.swift in Sources */,
 				02F9075A21AFF0BD00571663 /* KeyType.swift in Sources */,
 				0228D1E721B3A35A00565F51 /* Base58.swift in Sources */,
@@ -562,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028E93CF21B8394A004B9F09 /* WebsocketRpcTests.swift in Sources */,
 				028E93C221B7B515004B9F09 /* AccountTests.swift in Sources */,
 				0228D1EB21B3ACFF00565F51 /* CryptoTests.swift in Sources */,
 				028E93C421B7CC95004B9F09 /* IdentityTests.swift in Sources */,
@@ -856,6 +896,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UZ5E3YN55V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OntSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -876,6 +920,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UZ5E3YN55V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OntSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
