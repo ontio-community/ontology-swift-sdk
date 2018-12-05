@@ -94,6 +94,10 @@ extension Data {
     }
     throw DataBytesError.fail2genRandom
   }
+  
+  public var utf8string: String? {
+    return String(bytes: self, encoding: .utf8)
+  }
 }
 
 public enum DataBytesError: Error {

@@ -17,4 +17,21 @@ public class PublicKey: Key {
       return try pkey.verify(msg: msg, sig: sig)
     }
   }
+
+  public var hexEncoded: String {
+    return hex()
+  }
+
+  public func hex() -> String {
+    var buf = Data()
+    switch algorithm {
+    case .ecdsa:
+      buf.append(raw)
+    case .eddsa, .sm2:
+      buf.append(UInt8(algorithm.value))
+      buf.append(UInt8(parameters.curve.value))
+      buf.append(raw)
+    }
+    return buf.base64EncodedString()
+  }
 }

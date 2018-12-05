@@ -10,7 +10,7 @@ import Foundation
 import OpenSSL
 
 public class PrivateKey: Key, Encodable, Decodable {
-  public let scrypt: ScryptParams
+  public private(set) var scrypt: ScryptParams
 
   public init(raw: Data, algorithm: KeyType? = nil, parameters: KeyParameters? = nil, scrypt: ScryptParams? = nil) throws {
     self.scrypt = scrypt ?? ScryptParams.defaultParams
@@ -111,6 +111,10 @@ public class PrivateKey: Key, Encodable, Decodable {
     }
     return key
   }
+  
+  public func decrypt(keyphrase: String, addr: Address, salt: Data, params: ScryptParams? = nil) throws -> PrivateKey  {
+    return try decrypt(keyphrase: keyphrase.data(using: .utf8)!, addr: addr, salt: salt, params: params)
+  }
 
   public func wif() throws -> String {
     var data = Data()
@@ -136,6 +140,10 @@ public class PrivateKey: Key, Encodable, Decodable {
       throw PrivateKeyError.illegalWif
     }
     return try PrivateKey(raw: data.subdata(in: 1 ..< 33))
+  }
+  
+  func forceScrypt(params: ScryptParams) {
+    scrypt = params
   }
 }
 

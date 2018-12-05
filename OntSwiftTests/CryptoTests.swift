@@ -169,11 +169,4 @@ class CryptoTests: XCTestCase {
     )
     XCTAssertEqual("YRUp1haBykuJvbNCPiTaAU3HunubC47n7bZXveUsAlcNkjo6KF31g+arGq2t2C0t", encPrikey.raw.base64EncodedString())
   }
-
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    measure {
-      // Put the code you want to measure the time of here.
-    }
-  }
 }
