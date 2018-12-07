@@ -78,7 +78,7 @@ class CryptoTests: XCTestCase {
       curve: Curve.p256.preset
     )
     let msg = "helloworld".data(using: .utf8)!
-    let sig = try pkey.sign(msg: msg, scheme: SignatureScheme.ecdsaSha256).hex()
+    let sig = try pkey.sign(msg: msg, scheme: SignatureScheme.ecdsaSha256).hexEncoded
     XCTAssertTrue(try pkey.verify(msg: msg, sig: Signature.from(hex: sig)))
   }
 

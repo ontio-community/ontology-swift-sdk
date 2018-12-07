@@ -32,8 +32,15 @@ public final class Constant {
 
   public static let testNode = "polaris1.ont.io"
   public static let httpWsPort = "20335"
-  
+
   public static let testOntUrl = JSON([
-    "SOCKET_URL": "ws://\(testNode):\(httpWsPort)"
+    "SOCKET_URL": "ws://\(testNode):\(httpWsPort)",
   ])
+
+  public static let tokenType = JSON([
+    "ONT": "ONT",
+    "ONT": "ONT",
+  ])
+
+  public static let nativeInvokeName = "Ontology.Native.Invoke"
 }

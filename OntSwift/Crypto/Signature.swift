@@ -20,7 +20,7 @@ public class Signature {
     algorithm = scheme
   }
 
-  public func hex() -> String {
+  public var bytes: Data {
     var buf = Data()
     buf.append(UInt8(algorithm.value))
     if algorithm == .sm2Sm3 {
@@ -29,7 +29,11 @@ public class Signature {
     }
     buf.append(r)
     buf.append(s)
-    return buf.hex()
+    return buf
+  }
+
+  public var hexEncoded: String {
+    return bytes.hexEncoded
   }
 
   public static func from(hex: String) throws -> Signature {
@@ -98,6 +102,27 @@ public final class Eddsa {
   }
 }
 
+/// Wrapper of BIGNUM*
+public final class BN: Equatable, Comparable {
+  public fileprivate(set) var raw: OpaquePointer?
+
+  public init(raw: OpaquePointer?) {
+    self.raw = raw
+  }
+
+  public static func cmp(_ a: BN, _ b: BN) -> Int {
+    return Int(BN_cmp(a.raw, b.raw))
+  }
+
+  public static func == (_ a: BN, _ b: BN) -> Bool {
+    return BN.cmp(a, b) == 0 ? true : false
+  }
+
+  public static func < (_ a: BN, _ b: BN) -> Bool {
+    return BN.cmp(a, b) < 0 ? true : false
+  }
+}
+
 /// Wrapper of EVP_PKEY*
 public final class PKey {
   public fileprivate(set) var raw: OpaquePointer?
@@ -138,6 +163,16 @@ public final class PKey {
     var pbuf: UnsafeMutablePointer<UInt8>?
     let len = EC_POINT_point2buf(group, pubpnt, form, &pbuf, nil)
     return Data(bytesNoCopy: pbuf!, count: len, deallocator: .free)
+  }
+
+  public var pubxy: (x: BN, y: BN) {
+    let eckey = EVP_PKEY_get0_EC_KEY(raw)
+    let pubpnt = EC_KEY_get0_public_key(eckey)
+    let group = EC_GROUP_dup(EC_KEY_get0_group(eckey))
+    let x = BN_new()
+    let y = BN_new()
+    EC_POINT_get_affine_coordinates_GFp(group, pubpnt, x, y, nil)
+    return (BN(raw: x), BN(raw: y))
   }
 
   public func pri() -> Data {

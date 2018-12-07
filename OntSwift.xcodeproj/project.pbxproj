@@ -42,6 +42,24 @@
 		028E93EA21B869F3004B9F09 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93D021B8608A004B9F09 /* SwiftyJSON.framework */; };
 		028E93EC21B87426004B9F09 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93EB21B87426004B9F09 /* Promises.framework */; };
 		028E93EE21B87806004B9F09 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028E93ED21B87806004B9F09 /* FBLPromises.framework */; };
+		028E93F021B89EF5004B9F09 /* ScriptReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93EF21B89EF5004B9F09 /* ScriptReader.swift */; };
+		028E93F221B8A0CE004B9F09 /* BufferReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93F121B8A0CE004B9F09 /* BufferReader.swift */; };
+		028E93F521B9342C004B9F09 /* ProgramInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93F421B9342C004B9F09 /* ProgramInfo.swift */; };
+		028E93F721B934A6004B9F09 /* ProgramReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93F621B934A6004B9F09 /* ProgramReader.swift */; };
+		028E93FA21BA843C004B9F09 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93F921BA843C004B9F09 /* Payload.swift */; };
+		028E93FC21BA8921004B9F09 /* InvokeCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93FB21BA8921004B9F09 /* InvokeCode.swift */; };
+		028E93FE21BA8F06004B9F09 /* DeployCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E93FD21BA8F06004B9F09 /* DeployCode.swift */; };
+		028E940121BA9D6A004B9F09 /* TxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940021BA9D6A004B9F09 /* TxType.swift */; };
+		028E940321BA9EC7004B9F09 /* Signable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940221BA9EC7004B9F09 /* Signable.swift */; };
+		028E940521BA9F9B004B9F09 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940421BA9F9B004B9F09 /* Transaction.swift */; };
+		028E940921BAA0BE004B9F09 /* AbiFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940821BAA0BE004B9F09 /* AbiFunction.swift */; };
+		028E940B21BAA100004B9F09 /* AbiParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940A21BAA100004B9F09 /* AbiParameter.swift */; };
+		028E940D21BAB22A004B9F09 /* AbiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940C21BAB22A004B9F09 /* AbiInfo.swift */; };
+		028E940F21BAB528004B9F09 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E940E21BAB528004B9F09 /* Struct.swift */; };
+		028E941121BAB5A5004B9F09 /* NativeVmParamsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941021BAB5A5004B9F09 /* NativeVmParamsBuilder.swift */; };
+		028E941521BAEB0E004B9F09 /* OntAssetTxBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */; };
+		028E941721BAF0BF004B9F09 /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941621BAF0BF004B9F09 /* TxSignature.swift */; };
+		028E941B21BAFCF8004B9F09 /* TransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941A21BAFCF8004B9F09 /* TransactionBuilder.swift */; };
 		029ACAB021B4345700FC656F /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAAF21B4345700FC656F /* Signature.swift */; };
 		029ACAB221B637B900FC656F /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB121B637B900FC656F /* PublicKey.swift */; };
 		029ACAB421B63D9300FC656F /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB321B63D9300FC656F /* AES.swift */; };
@@ -138,6 +156,24 @@
 		028E93D221B8608A004B9F09 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		028E93EB21B87426004B9F09 /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Promises.framework; path = Carthage/Build/iOS/Promises.framework; sourceTree = "<group>"; };
 		028E93ED21B87806004B9F09 /* FBLPromises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBLPromises.framework; path = Carthage/Build/iOS/FBLPromises.framework; sourceTree = "<group>"; };
+		028E93EF21B89EF5004B9F09 /* ScriptReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptReader.swift; sourceTree = "<group>"; };
+		028E93F121B8A0CE004B9F09 /* BufferReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferReader.swift; sourceTree = "<group>"; };
+		028E93F421B9342C004B9F09 /* ProgramInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramInfo.swift; sourceTree = "<group>"; };
+		028E93F621B934A6004B9F09 /* ProgramReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramReader.swift; sourceTree = "<group>"; };
+		028E93F921BA843C004B9F09 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		028E93FB21BA8921004B9F09 /* InvokeCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvokeCode.swift; sourceTree = "<group>"; };
+		028E93FD21BA8F06004B9F09 /* DeployCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeployCode.swift; sourceTree = "<group>"; };
+		028E940021BA9D6A004B9F09 /* TxType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxType.swift; sourceTree = "<group>"; };
+		028E940221BA9EC7004B9F09 /* Signable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signable.swift; sourceTree = "<group>"; };
+		028E940421BA9F9B004B9F09 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		028E940821BAA0BE004B9F09 /* AbiFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiFunction.swift; sourceTree = "<group>"; };
+		028E940A21BAA100004B9F09 /* AbiParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiParameter.swift; sourceTree = "<group>"; };
+		028E940C21BAB22A004B9F09 /* AbiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiInfo.swift; sourceTree = "<group>"; };
+		028E940E21BAB528004B9F09 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		028E941021BAB5A5004B9F09 /* NativeVmParamsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeVmParamsBuilder.swift; sourceTree = "<group>"; };
+		028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OntAssetTxBuilder.swift; sourceTree = "<group>"; };
+		028E941621BAF0BF004B9F09 /* TxSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxSignature.swift; sourceTree = "<group>"; };
+		028E941A21BAFCF8004B9F09 /* TransactionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionBuilder.swift; sourceTree = "<group>"; };
 		029ACAAF21B4345700FC656F /* Signature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
 		029ACAB121B637B900FC656F /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		029ACAB321B63D9300FC656F /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
@@ -218,6 +254,65 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		028E93F821BA8431004B9F09 /* Payload */ = {
+			isa = PBXGroup;
+			children = (
+				028E93F921BA843C004B9F09 /* Payload.swift */,
+				028E93FB21BA8921004B9F09 /* InvokeCode.swift */,
+				028E93FD21BA8F06004B9F09 /* DeployCode.swift */,
+			);
+			path = Payload;
+			sourceTree = "<group>";
+		};
+		028E93FF21BA9D46004B9F09 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				028E940021BA9D6A004B9F09 /* TxType.swift */,
+				028E940221BA9EC7004B9F09 /* Signable.swift */,
+				028E940421BA9F9B004B9F09 /* Transaction.swift */,
+				028E941621BAF0BF004B9F09 /* TxSignature.swift */,
+				028E941A21BAFCF8004B9F09 /* TransactionBuilder.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		028E940621BAA044004B9F09 /* SmartContract */ = {
+			isa = PBXGroup;
+			children = (
+				028E940721BAA0AC004B9F09 /* Abi */,
+				028E941221BAEAD1004B9F09 /* Nativevm */,
+				028E941321BAEAEF004B9F09 /* Neovm */,
+			);
+			path = SmartContract;
+			sourceTree = "<group>";
+		};
+		028E940721BAA0AC004B9F09 /* Abi */ = {
+			isa = PBXGroup;
+			children = (
+				028E940821BAA0BE004B9F09 /* AbiFunction.swift */,
+				028E940A21BAA100004B9F09 /* AbiParameter.swift */,
+				028E940C21BAB22A004B9F09 /* AbiInfo.swift */,
+				028E940E21BAB528004B9F09 /* Struct.swift */,
+				028E941021BAB5A5004B9F09 /* NativeVmParamsBuilder.swift */,
+			);
+			path = Abi;
+			sourceTree = "<group>";
+		};
+		028E941221BAEAD1004B9F09 /* Nativevm */ = {
+			isa = PBXGroup;
+			children = (
+				028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */,
+			);
+			path = Nativevm;
+			sourceTree = "<group>";
+		};
+		028E941321BAEAEF004B9F09 /* Neovm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Neovm;
+			sourceTree = "<group>";
+		};
 		029ACAB721B671C700FC656F /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +321,7 @@
 				029ACAB821B6768F00FC656F /* Data+Bytes.swift */,
 				028E93B921B76A6B004B9F09 /* Encodable+Dict.swift */,
 				028E93C721B7D898004B9F09 /* Date+ISO8601.swift */,
+				028E93F121B8A0CE004B9F09 /* BufferReader.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -233,8 +329,10 @@
 		029ACABA21B681B200FC656F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				028E93F821BA8431004B9F09 /* Payload */,
 				029ACAC021B6AD2F00FC656F /* Program */,
 				029ACABB21B681BD00FC656F /* Script */,
+				028E93FF21BA9D46004B9F09 /* Transaction */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -242,8 +340,9 @@
 		029ACABB21B681BD00FC656F /* Script */ = {
 			isa = PBXGroup;
 			children = (
-				029ACABC21B687B000FC656F /* ScriptBuilder.swift */,
 				029ACABE21B6AA9400FC656F /* Opcode.swift */,
+				029ACABC21B687B000FC656F /* ScriptBuilder.swift */,
+				028E93EF21B89EF5004B9F09 /* ScriptReader.swift */,
 			);
 			path = Script;
 			sourceTree = "<group>";
@@ -251,7 +350,9 @@
 		029ACAC021B6AD2F00FC656F /* Program */ = {
 			isa = PBXGroup;
 			children = (
+				028E93F421B9342C004B9F09 /* ProgramInfo.swift */,
 				029ACAC121B6AD4200FC656F /* ProgramBuilder.swift */,
+				028E93F621B934A6004B9F09 /* ProgramReader.swift */,
 			);
 			path = Program;
 			sourceTree = "<group>";
@@ -282,6 +383,7 @@
 			children = (
 				029ACAB721B671C700FC656F /* Common */,
 				029ACABA21B681B200FC656F /* Core */,
+				028E940621BAA044004B9F09 /* SmartContract */,
 				02F9075821AFEF3900571663 /* Crypto */,
 				028E93CB21B838FF004B9F09 /* Network */,
 				02F9076321B0FB0C00571663 /* SDK */,
@@ -566,11 +668,15 @@
 				02F9076221B0F9D500571663 /* Key.swift in Sources */,
 				0228D1E521B2F33B00565F51 /* WordList.swift in Sources */,
 				02A9921621B117AF005CA392 /* Data+Hex.swift in Sources */,
+				028E940121BA9D6A004B9F09 /* TxType.swift in Sources */,
 				02F9075E21AFF54F00571663 /* Curve.swift in Sources */,
 				02F9076021B0F54A00571663 /* SignatureScheme.swift in Sources */,
 				028E93C021B7ABE7004B9F09 /* Identity.swift in Sources */,
 				0228D1ED21B3AF4000565F51 /* PrivateKey.swift in Sources */,
+				028E940921BAA0BE004B9F09 /* AbiFunction.swift in Sources */,
 				029ACABD21B687B000FC656F /* ScriptBuilder.swift in Sources */,
+				028E940F21BAB528004B9F09 /* Struct.swift in Sources */,
+				028E940521BA9F9B004B9F09 /* Transaction.swift in Sources */,
 				029ACAB921B6768F00FC656F /* Data+Bytes.swift in Sources */,
 				0228D1DB21B2E92000565F51 /* HDPrivateKey.swift in Sources */,
 				029ACABF21B6AA9400FC656F /* Opcode.swift in Sources */,
@@ -578,21 +684,35 @@
 				029ACAB021B4345700FC656F /* Signature.swift in Sources */,
 				028E93C621B7D002004B9F09 /* Wallet.swift in Sources */,
 				028E93C821B7D898004B9F09 /* Date+ISO8601.swift in Sources */,
+				028E93F021B89EF5004B9F09 /* ScriptReader.swift in Sources */,
+				028E940B21BAA100004B9F09 /* AbiParameter.swift in Sources */,
 				029ACAB221B637B900FC656F /* PublicKey.swift in Sources */,
+				028E93FE21BA8F06004B9F09 /* DeployCode.swift in Sources */,
+				028E93F221B8A0CE004B9F09 /* BufferReader.swift in Sources */,
+				028E93FA21BA843C004B9F09 /* Payload.swift in Sources */,
+				028E941121BAB5A5004B9F09 /* NativeVmParamsBuilder.swift in Sources */,
 				028E93CD21B8392B004B9F09 /* WebsocketRpc.swift in Sources */,
 				0228D1D121B1C41E00565F51 /* BigInt.swift in Sources */,
 				02F9075A21AFF0BD00571663 /* KeyType.swift in Sources */,
+				028E940321BA9EC7004B9F09 /* Signable.swift in Sources */,
+				028E93FC21BA8921004B9F09 /* InvokeCode.swift in Sources */,
 				0228D1E721B3A35A00565F51 /* Base58.swift in Sources */,
 				0228D1E321B2F31600565F51 /* Mnemonic.swift in Sources */,
+				028E941B21BAFCF8004B9F09 /* TransactionBuilder.swift in Sources */,
 				0228D1CB21B1ABC100565F51 /* Scrypt.swift in Sources */,
+				028E93F721B934A6004B9F09 /* ProgramReader.swift in Sources */,
 				028E93BA21B76A6B004B9F09 /* Encodable+Dict.swift in Sources */,
 				02A9921321B10AB8005CA392 /* Hash.swift in Sources */,
+				028E93F521B9342C004B9F09 /* ProgramInfo.swift in Sources */,
 				0228D1DF21B2EBCE00565F51 /* BitcoinKit.Private.swift in Sources */,
 				028E93BC21B7A05B004B9F09 /* Keystore.swift in Sources */,
 				028E93BE21B7A7DB004B9F09 /* ControlData.swift in Sources */,
 				02F9075C21AFF4EB00571663 /* KeyParameters.swift in Sources */,
 				029ACAB421B63D9300FC656F /* AES.swift in Sources */,
 				029ACAB621B6629C00FC656F /* Address.swift in Sources */,
+				028E940D21BAB22A004B9F09 /* AbiInfo.swift in Sources */,
+				028E941521BAEB0E004B9F09 /* OntAssetTxBuilder.swift in Sources */,
+				028E941721BAF0BF004B9F09 /* TxSignature.swift in Sources */,
 				0228D1DC21B2E92000565F51 /* HDKeychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
