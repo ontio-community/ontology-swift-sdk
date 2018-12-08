@@ -60,6 +60,10 @@
 		028E941521BAEB0E004B9F09 /* OntAssetTxBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */; };
 		028E941721BAF0BF004B9F09 /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941621BAF0BF004B9F09 /* TxSignature.swift */; };
 		028E941B21BAFCF8004B9F09 /* TransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941A21BAFCF8004B9F09 /* TransactionBuilder.swift */; };
+		028E941D21BB8BB5004B9F09 /* String+Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941C21BB8BB5004B9F09 /* String+Bounds.swift */; };
+		028E941F21BBC88B004B9F09 /* OntidContractTxBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E941E21BBC88A004B9F09 /* OntidContractTxBuilder.swift */; };
+		028E942121BBD482004B9F09 /* OepState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E942021BBD482004B9F09 /* OepState.swift */; };
+		028E942321BBD4F9004B9F09 /* Oep4TxBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028E942221BBD4F9004B9F09 /* Oep4TxBuilder.swift */; };
 		029ACAB021B4345700FC656F /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAAF21B4345700FC656F /* Signature.swift */; };
 		029ACAB221B637B900FC656F /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB121B637B900FC656F /* PublicKey.swift */; };
 		029ACAB421B63D9300FC656F /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAB321B63D9300FC656F /* AES.swift */; };
@@ -174,6 +178,10 @@
 		028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OntAssetTxBuilder.swift; sourceTree = "<group>"; };
 		028E941621BAF0BF004B9F09 /* TxSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxSignature.swift; sourceTree = "<group>"; };
 		028E941A21BAFCF8004B9F09 /* TransactionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionBuilder.swift; sourceTree = "<group>"; };
+		028E941C21BB8BB5004B9F09 /* String+Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Bounds.swift"; sourceTree = "<group>"; };
+		028E941E21BBC88A004B9F09 /* OntidContractTxBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OntidContractTxBuilder.swift; sourceTree = "<group>"; };
+		028E942021BBD482004B9F09 /* OepState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OepState.swift; sourceTree = "<group>"; };
+		028E942221BBD4F9004B9F09 /* Oep4TxBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oep4TxBuilder.swift; sourceTree = "<group>"; };
 		029ACAAF21B4345700FC656F /* Signature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
 		029ACAB121B637B900FC656F /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		029ACAB321B63D9300FC656F /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
@@ -302,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				028E941421BAEB0E004B9F09 /* OntAssetTxBuilder.swift */,
+				028E941E21BBC88A004B9F09 /* OntidContractTxBuilder.swift */,
 			);
 			path = Nativevm;
 			sourceTree = "<group>";
@@ -309,6 +318,8 @@
 		028E941321BAEAEF004B9F09 /* Neovm */ = {
 			isa = PBXGroup;
 			children = (
+				028E942021BBD482004B9F09 /* OepState.swift */,
+				028E942221BBD4F9004B9F09 /* Oep4TxBuilder.swift */,
 			);
 			path = Neovm;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 				028E93B921B76A6B004B9F09 /* Encodable+Dict.swift */,
 				028E93C721B7D898004B9F09 /* Date+ISO8601.swift */,
 				028E93F121B8A0CE004B9F09 /* BufferReader.swift */,
+				028E941C21BB8BB5004B9F09 /* String+Bounds.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 			files = (
 				029ACAC221B6AD4200FC656F /* ProgramBuilder.swift in Sources */,
 				028E93B821B7648B004B9F09 /* Account.swift in Sources */,
+				028E942321BBD4F9004B9F09 /* Oep4TxBuilder.swift in Sources */,
 				02F9076221B0F9D500571663 /* Key.swift in Sources */,
 				0228D1E521B2F33B00565F51 /* WordList.swift in Sources */,
 				02A9921621B117AF005CA392 /* Data+Hex.swift in Sources */,
@@ -686,6 +699,7 @@
 				028E93C821B7D898004B9F09 /* Date+ISO8601.swift in Sources */,
 				028E93F021B89EF5004B9F09 /* ScriptReader.swift in Sources */,
 				028E940B21BAA100004B9F09 /* AbiParameter.swift in Sources */,
+				028E941D21BB8BB5004B9F09 /* String+Bounds.swift in Sources */,
 				029ACAB221B637B900FC656F /* PublicKey.swift in Sources */,
 				028E93FE21BA8F06004B9F09 /* DeployCode.swift in Sources */,
 				028E93F221B8A0CE004B9F09 /* BufferReader.swift in Sources */,
@@ -693,6 +707,7 @@
 				028E941121BAB5A5004B9F09 /* NativeVmParamsBuilder.swift in Sources */,
 				028E93CD21B8392B004B9F09 /* WebsocketRpc.swift in Sources */,
 				0228D1D121B1C41E00565F51 /* BigInt.swift in Sources */,
+				028E941F21BBC88B004B9F09 /* OntidContractTxBuilder.swift in Sources */,
 				02F9075A21AFF0BD00571663 /* KeyType.swift in Sources */,
 				028E940321BA9EC7004B9F09 /* Signable.swift in Sources */,
 				028E93FC21BA8921004B9F09 /* InvokeCode.swift in Sources */,
@@ -701,6 +716,7 @@
 				028E941B21BAFCF8004B9F09 /* TransactionBuilder.swift in Sources */,
 				0228D1CB21B1ABC100565F51 /* Scrypt.swift in Sources */,
 				028E93F721B934A6004B9F09 /* ProgramReader.swift in Sources */,
+				028E942121BBD482004B9F09 /* OepState.swift in Sources */,
 				028E93BA21B76A6B004B9F09 /* Encodable+Dict.swift in Sources */,
 				02A9921321B10AB8005CA392 /* Hash.swift in Sources */,
 				028E93F521B9342C004B9F09 /* ProgramInfo.swift in Sources */,

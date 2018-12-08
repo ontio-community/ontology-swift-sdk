@@ -9,9 +9,15 @@
 import Foundation
 
 public class AbiFunction: Codable {
-  public var name = ""
-  public var returnType = "any"
+  public let name: String
+  public let returnType: String
   public var parameters: [AbiParameter] = []
+
+  public init(name: String, params: [AbiParameter], returnType: String = "any") {
+    self.name = name
+    parameters = params
+    self.returnType = returnType
+  }
 
   public func get(parameter: String) -> AbiParameter? {
     for p in parameters {
@@ -50,14 +56,17 @@ public class AbiFunction: Codable {
     }
   }
 
-  public required init(from decoder: Decoder) throws {
+  public required convenience init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    name = try container.decode(String.self, forKey: .name)
-    returnType = try container.decode(String.self, forKey: .returnType)
+    let name = try container.decode(String.self, forKey: .name)
+    let returnType = try container.decode(String.self, forKey: .returnType)
 
+    var parameters: [AbiParameter] = []
     var parametersContainer = try container.nestedUnkeyedContainer(forKey: .parameters)
     while !parametersContainer.isAtEnd {
       parameters.append(try parametersContainer.decode(AbiParameter.self))
     }
+
+    self.init(name: name, params: parameters, returnType: returnType)
   }
 }

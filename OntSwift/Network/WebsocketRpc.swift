@@ -73,6 +73,213 @@ public class WebsocketRpc {
     return try send(data: data).deferred
   }
 
+  public func send(rawTransaction: Data, preExec: Bool = false) throws -> Promise<JSON> {
+    var data = [
+      "Action": "getconnectioncount",
+      "Version": "1.0.0",
+      "Data": rawTransaction.hexEncoded,
+    ]
+    if preExec {
+      data["PreExec"] = "1"
+    }
+    return try send(data: data).deferred
+  }
+
+  public func getRawTransaction(txHash: String, json: Bool = false) throws -> Promise<JSON> {
+    let data = [
+      "Action": "gettransaction",
+      "Version": "1.0.0",
+      "Hash": txHash,
+      "Raw": json ? "0" : "1",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getBlockHeight() throws -> Promise<JSON> {
+    let data = [
+      "Action": "getblockheight",
+      "Version": "1.0.0",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getBlock(by height: Int, json: Bool = false) throws -> Promise<JSON> {
+    var data = [
+      "Action": "getblockbyheight",
+      "Version": "1.0.0",
+      "Height": height.description,
+    ]
+    if !json {
+      data["Raw"] = "1"
+    }
+    return try send(data: data).deferred
+  }
+
+  public func getBlock(by hash: String, json: Bool = false) throws -> Promise<JSON> {
+    var data = [
+      "Action": "getblockbyhash",
+      "Version": "1.0.0",
+      "Hash": hash,
+    ]
+    if !json {
+      data["Raw"] = "1"
+    }
+    return try send(data: data).deferred
+  }
+
+  public func getBalance(address: Address) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getbalance",
+      "Version": "1.0.0",
+      "Addr": try address.toBase58(),
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getUnboundOng(address: Address) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getunboundong",
+      "Version": "1.0.0",
+      "Addr": try address.toBase58(),
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getContract(hash: String, json: Bool = false) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getcontract",
+      "Version": "1.0.0",
+      "Hash": hash,
+      "Raw": json ? "0" : "1",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getSmartCodeEvent(by height: Int) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getsmartcodeeventbyheight",
+      "Version": "1.0.0",
+      "Height": height.description,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getSmartCodeEvent(by hash: String) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getsmartcodeeventbyhash",
+      "Version": "1.0.0",
+      "Hash": hash,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getBlockHeight(by txHash: String) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getblockheightbytxhash",
+      "Version": "1.0.0",
+      "Hash": txHash,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getStorage(codeHash: String, key: String) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getstorage",
+      "Version": "1.0.0",
+      "Hash": codeHash,
+      "Key": key,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getMerkleProof(hash: String) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getmerkleproof",
+      "Version": "1.0.0",
+      "Hash": hash,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getAllowance(asset: String, from: Address, to _: Address) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getallowance",
+      "Version": "1.0.0",
+      "Asset": asset,
+      "From": try from.toBase58(),
+      "To": try from.toBase58(),
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getBlockHash(value: Int) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getblockhash",
+      "Version": "1.0.0",
+      "Height": value.description,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getBlockTxsByHeight(value: Int) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getblocktxsbyheight",
+      "Version": "1.0.0",
+      "Height": value.description,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getGasPrice() throws -> Promise<JSON> {
+    let data = [
+      "Action": "getgasprice",
+      "Version": "1.0.0",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getGrantOng(address: Address) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getgrantong",
+      "Version": "1.0.0",
+      "Addr": try address.toBase58(),
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getMempoolTxCount() throws -> Promise<JSON> {
+    let data = [
+      "Action": "getmempooltxcount",
+      "Version": "1.0.0",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getMempoolTxState(txHash: String) throws -> Promise<JSON> {
+    let data = [
+      "Action": "getmempooltxstate",
+      "Version": "1.0.0",
+      "Hash": txHash,
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getVersion() throws -> Promise<JSON> {
+    let data = [
+      "Action": "getversion",
+      "Version": "1.0.0",
+    ]
+    return try send(data: data).deferred
+  }
+
+  public func getNetworkId() throws -> Promise<JSON> {
+    let data = [
+      "Action": "getnetworkid",
+      "Version": "1.0.0",
+    ]
+    return try send(data: data).deferred
+  }
+
   public func open() {
     ws.event.open = webSocketOpen
     ws.event.error = webSocketError

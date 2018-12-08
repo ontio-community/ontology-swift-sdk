@@ -47,6 +47,14 @@ public class BufferReader {
     return sub
   }
 
+  public func advance(cnt: Int) {
+    ofst += cnt
+  }
+
+  public func branch(ofst: Int) -> BufferReader {
+    return BufferReader(buf: buf, ofst: ofst)
+  }
+
   public var isEnd: Bool {
     assert(ofst <= buf.count)
     return ofst == buf.count

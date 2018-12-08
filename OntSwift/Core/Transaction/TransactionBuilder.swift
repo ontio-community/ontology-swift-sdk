@@ -85,4 +85,55 @@ public class TransactionBuilder {
 
     return tx
   }
+
+  public func makeInvokeTransaction(
+    fnName _: String,
+    params: Data,
+    contract: Address,
+    gasPrice: String = "0",
+    gasLimit: String = "20000",
+    payer: Address? = nil
+  ) throws -> Transaction {
+    let tx = try Transaction()
+    tx.type = TxType.invoke
+
+    let b = ScriptBuilder()
+    _ = b.push(rawbytes: params)
+
+    _ = try b.push(opcode: Opcode.APPCALL)
+    _ = try b.push(address: contract)
+
+    let payload = InvokeCode()
+    payload.code = b.buf
+
+    tx.gasPrice = BigInt(gasPrice).int64!
+    tx.gasLimit = BigInt(gasLimit).int64!
+
+    if let payer = payer {
+      tx.payer = payer
+    }
+
+    return tx
+  }
+
+  public func makeInvokeTransaction(
+    fnName: String,
+    params: [AbiParameter],
+    contract: Address,
+    gasPrice: String = "0",
+    gasLimit: String = "20000",
+    payer: Address? = nil
+  ) throws -> Transaction {
+    let b = NativeVmParamsBuilder()
+    let fn = AbiFunction(name: fnName, params: params)
+    _ = try b.push(fn: fn)
+    return try makeInvokeTransaction(
+      fnName: fnName,
+      params: b.buf,
+      contract: contract,
+      gasPrice: gasPrice,
+      gasLimit: gasLimit,
+      payer: payer
+    )
+  }
 }
