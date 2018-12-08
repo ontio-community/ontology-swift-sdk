@@ -113,12 +113,13 @@ public class BigInt: CustomStringConvertible, Codable {
   }
 
   public var bytes: Data {
-    let size = 1 + ((bitLen + 7) / 8)
-    var b = [UInt8](repeating: UInt8(0), count: size)
-    var n = size_t(b.count)
-    __gmpz_export(&b, &n, 1, 1, 1, 0, &m)
+    let size = 1
+    let bitsPerWord = size * 8
+    let count = 1 + ((bitLen + bitsPerWord - 1) / bitsPerWord)
+    var b = [UInt8](repeating: UInt8(0), count: count)
+    __gmpz_export(&b, nil, 1, size, 1, 0, &m)
 
-    return Data(bytes: b[0 ..< n])
+    return Data(bytes: b)
   }
 
   public static func abs(_ x: BigInt) -> BigInt {

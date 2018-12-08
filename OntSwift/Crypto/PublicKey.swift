@@ -32,7 +32,7 @@ public class PublicKey: Key {
       buf.append(UInt8(parameters.curve.value))
       buf.append(raw)
     }
-    return buf.base64EncodedString()
+    return buf.hexEncoded
   }
 
   public static func from(bytes: Data, len: Int = 33) throws -> PublicKey {

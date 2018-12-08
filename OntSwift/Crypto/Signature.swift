@@ -36,8 +36,8 @@ public class Signature {
     return bytes.hexEncoded
   }
 
-  public static func from(hex: String) throws -> Signature {
-    let buf = Data.from(hex: hex)!
+  public static func from(raw: Data) throws -> Signature {
+    let buf = raw
     let algo = SignatureScheme(rawValue: Int(buf[0]))!
     var rs = buf.subdata(in: 1 ..< buf.count)
     if algo == .sm2Sm3 {
@@ -52,6 +52,11 @@ public class Signature {
     let r = rs.subdata(in: 0 ..< 32)
     let s = rs.subdata(in: 32 ..< rs.count)
     return Signature(r: r, s: s, scheme: algo)
+  }
+
+  public static func from(hex: String) throws -> Signature {
+    let raw = Data.from(hex: hex)!
+    return try from(raw: raw)
   }
 }
 

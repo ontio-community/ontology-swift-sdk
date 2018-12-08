@@ -39,7 +39,7 @@ public final class Constant {
 
   public static let tokenType = JSON([
     "ONT": "ONT",
-    "ONT": "ONT",
+    "ONG": "ONG",
   ])
 
   public static let nativeInvokeName = "Ontology.Native.Invoke"

@@ -82,6 +82,15 @@ class CryptoTests: XCTestCase {
     XCTAssertTrue(try pkey.verify(msg: msg, sig: Signature.from(hex: sig)))
   }
 
+  func testEcJavaSign() throws {
+    let pri = "0fdbd5d046997da9959b1931c727c96d83dff19e8ec0244952c1e72d1cdb5bf4"
+    let prikey = try PrivateKey(raw: Data.from(hex: pri)!)
+    let pubkey = try prikey.getPublicKey()
+    let msg = "deviceCode=device79dd02d40eb6422bb1f7924c2a6b06af&nonce=1042961893&ontId=did:ont:AVRKWDig5TorzjCS5xphjgMnmdsT7KgsGD&timestamp=1535970123".data(using: .utf8)!
+    let sig = try Signature.from(raw: Data(base64Encoded: "AYUi0ZgY7ZGN9Msr42prWjsghbcQ6yGaRL34RSUwQr949JMXuhrbjWCYIO3UV1FbFbNKG0YZByYHkffu800pNMw=")!)
+    XCTAssertTrue(try pubkey.verify(msg: msg, sig: sig))
+  }
+
   func testSm2Sign() throws {
     let pri = "0fdbd5d046997da9959b1931c727c96d83dff19e8ec0244952c1e72d1cdb5bf4"
     let pkey = Ecdsa.pkey(

@@ -28,19 +28,11 @@ public class OntAssetTxBuilder {
     return amount
   }
 
-  public func verify(amount: Int) throws -> BigInt {
-    return try verify(amount: BigInt(amount))
-  }
-
-  public func verify(amount: String) throws -> BigInt {
-    return try verify(amount: BigInt(amount))
-  }
-
   public func makeTransferTx(
     tokenType: String,
     from: Address,
     to: Address,
-    amount: String,
+    amount: BigInt,
     gasPrice: String = "0",
     gasLimit: String = "20000",
     payer: Address? = nil
@@ -83,7 +75,7 @@ public class OntAssetTxBuilder {
   public func makeWithdrawOngTx(
     from: Address,
     to: Address,
-    amount: String,
+    amount: BigInt,
     gasPrice: String,
     gasLimit: String,
     payer: Address

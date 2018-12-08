@@ -31,7 +31,7 @@ public class Oep4TxBuilder {
   public func makeTransferTx(
     from: Address,
     to: Address,
-    amount: String,
+    amount: BigInt,
     gasPrice: String,
     gasLimit: String,
     payer: Address
@@ -40,7 +40,7 @@ public class Oep4TxBuilder {
     let fn = Oep4TxBuilder.Method.transfer.rawValue
     let v1 = try Data.from(hex: from.serialize())!
     let v2 = try Data.from(hex: to.serialize())!
-    let v3 = BigInt(amount)
+    let v3 = amount
     let p1 = AbiParameter(name: "from", type: .byteArray, value: AbiParameter.Value.bytes(v1))
     let p2 = AbiParameter(name: "to", type: .byteArray, value: AbiParameter.Value.bytes(v2))
     let p3 = AbiParameter(name: "value", type: .long, value: AbiParameter.Value.long(v3))
@@ -83,7 +83,7 @@ public class Oep4TxBuilder {
   public func makeApproveTx(
     owner: Address,
     spender: Address,
-    amount: String,
+    amount: BigInt,
     gasPrice: String,
     gasLimit: String,
     payer: Address
@@ -91,7 +91,7 @@ public class Oep4TxBuilder {
     let fn = Oep4TxBuilder.Method.approve.rawValue
     let v1 = try Data.from(hex: owner.serialize())!
     let v2 = try Data.from(hex: spender.serialize())!
-    let v3 = BigInt(amount)
+    let v3 = amount
     let p1 = AbiParameter(name: "owner", type: .byteArray, value: AbiParameter.Value.bytes(v1))
     let p2 = AbiParameter(name: "spender", type: .byteArray, value: AbiParameter.Value.bytes(v2))
     let p3 = AbiParameter(name: "amount", type: .long, value: AbiParameter.Value.long(v3))
@@ -110,7 +110,7 @@ public class Oep4TxBuilder {
     spender: Address,
     from: Address,
     to: Address,
-    amount: String,
+    amount: BigInt,
     gasPrice: String,
     gasLimit: String,
     payer: Address
@@ -119,7 +119,7 @@ public class Oep4TxBuilder {
     let v1 = try Data.from(hex: spender.serialize())!
     let v2 = try Data.from(hex: from.serialize())!
     let v3 = try Data.from(hex: to.serialize())!
-    let v4 = BigInt(amount)
+    let v4 = amount
     let b = TransactionBuilder()
     let params: [AbiParameter] = [
       AbiParameter(name: "spender", type: .byteArray, value: AbiParameter.Value.bytes(v1)),

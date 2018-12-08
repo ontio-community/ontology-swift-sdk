@@ -26,9 +26,9 @@ public class NativeVmParamsBuilder: ScriptBuilder {
     case let obj as Struct:
       try obj.list.forEach {
         _ = try pushCodeParamScript(obj: $0)
-        _ = try push(int: Opcode.DUPFROMALTSTACK)
-        _ = try push(int: Opcode.SWAP)
-        _ = try push(int: Opcode.APPEND)
+        _ = try push(opcode: Opcode.DUPFROMALTSTACK)
+        _ = try push(opcode: Opcode.SWAP)
+        _ = try push(opcode: Opcode.APPEND)
       }
     default:
       throw NativeVmParamsBuilderError.unsupportedParamType

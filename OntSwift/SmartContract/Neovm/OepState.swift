@@ -13,9 +13,9 @@ public class OepState {
   public let to: String
   public let amount: BigInt
 
-  public init(from: Address, to: Address, amount: String) throws {
+  public init(from: Address, to: Address, amount: BigInt) throws {
     self.from = try from.toBase58()
     self.to = try to.toBase58()
-    self.amount = BigInt(amount)
+    self.amount = amount
   }
 }

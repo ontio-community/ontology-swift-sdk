@@ -75,10 +75,11 @@ public class WebsocketRpc {
 
   public func send(rawTransaction: Data, preExec: Bool = false) throws -> Promise<JSON> {
     var data = [
-      "Action": "getconnectioncount",
+      "Action": "sendrawtransaction",
       "Version": "1.0.0",
       "Data": rawTransaction.hexEncoded,
     ]
+
     if preExec {
       data["PreExec"] = "1"
     }
@@ -201,15 +202,19 @@ public class WebsocketRpc {
     return try send(data: data).deferred
   }
 
-  public func getAllowance(asset: String, from: Address, to _: Address) throws -> Promise<JSON> {
+  public func getAllowance(asset: String, from: Address, to: Address) throws -> Promise<JSON> {
     let data = [
       "Action": "getallowance",
       "Version": "1.0.0",
       "Asset": asset,
       "From": try from.toBase58(),
-      "To": try from.toBase58(),
+      "To": try to.toBase58(),
     ]
     return try send(data: data).deferred
+  }
+
+  public func getUnclaimedOng(address: Address) throws -> Promise<JSON> {
+    return try getAllowance(asset: "ong", from: Address(value: OntAssetTxBuilder.ontContract), to: address)
   }
 
   public func getBlockHash(value: Int) throws -> Promise<JSON> {

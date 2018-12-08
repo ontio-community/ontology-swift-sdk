@@ -14,7 +14,7 @@ public enum Endian {
 
 extension Data {
   public mutating func append(_ newElement: UInt16, endian: Endian = .big) {
-    if endian == .big {
+    if endian == .little {
       append(UInt8(newElement & 0xFF))
       append(UInt8((newElement >> 8) & 0xFF))
     } else {
@@ -24,7 +24,7 @@ extension Data {
   }
 
   public mutating func append(_ newElement: UInt32, endian: Endian = .big) {
-    if endian == .big {
+    if endian == .little {
       append(UInt8(newElement & 0xFF))
       append(UInt8((newElement >> 8) & 0xFF))
       append(UInt8((newElement >> 16) & 0xFF))
@@ -38,7 +38,7 @@ extension Data {
   }
 
   public mutating func append(_ newElement: UInt64, endian: Endian = .big) {
-    if endian == .big {
+    if endian == .little {
       append(UInt8(newElement & 0xFF))
       append(UInt8((newElement >> 8) & 0xFF))
       append(UInt8((newElement >> 16) & 0xFF))

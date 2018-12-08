@@ -83,10 +83,11 @@ public class Transaction: Signable {
     _ = try b.push(num: version)
     _ = try b.push(num: type.rawValue)
 
-    _ = try b.push(hex: nonce)
+    _ = b.push(rawbytes: Data.from(hex: nonce)!)
     _ = try b.push(num: gasPrice, len: 8, endian: .little)
     _ = try b.push(num: gasLimit, len: 8, endian: .little)
-    _ = try b.push(address: payer)
+    _ = b.push(rawbytes: payer.value)
+
     guard let payload = payload else {
       throw TransactionError.emptyPayload
     }
@@ -97,7 +98,7 @@ public class Transaction: Signable {
 
   public func serializeSignedData() throws -> Data {
     let b = ScriptBuilder()
-    _ = try b.push(int: sigs.count)
+    _ = try b.push(num: sigs.count)
     for sig in sigs {
       _ = try b.push(rawbytes: sig.serialize())
     }

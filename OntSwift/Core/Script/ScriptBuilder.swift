@@ -73,11 +73,11 @@ public class ScriptBuilder {
 
   public func push(bigint: BigInt) throws -> Self {
     if bigint == BigInt(-1) {
-      _ = try push(int: Opcode.PUSHM1)
+      _ = try push(num: Opcode.PUSHM1)
     } else if bigint == BigInt(0) {
-      _ = try push(int: Opcode.PUSH0)
+      _ = try push(num: Opcode.PUSH0)
     } else if bigint > BigInt(0) && bigint < BigInt(16) {
-      _ = try push(int: Opcode.PUSH1 - 1 + bigint.int64!)
+      _ = try push(num: Opcode.PUSH1 - 1 + bigint.int64!)
     } else {
       _ = try push(hex: bigint.bytes)
     }
@@ -107,7 +107,7 @@ public class ScriptBuilder {
   }
 
   public func push(address: Address) throws -> Self {
-    return try push(hex: address.serialize())
+    return try push(hex: address.value)
   }
 
   public func push(opcode: Int) throws -> Self {
