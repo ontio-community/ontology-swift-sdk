@@ -116,6 +116,29 @@ class WebsocketRpcTests: XCTestCase {
 
     wait(for: [expect], timeout: 10.0)
   }
+
+  func testSendRawTransactoionWait() throws {
+    let expect = XCTestExpectation(description: "testSendRawTransactoionWait")
+
+    let b = OntidContractTxBuilder()
+    let tx = try b.buildRegisterOntidTx(
+      ontid: ontid!,
+      pubkey: prikey1!.getPublicKey(),
+      gasPrice: gasPrice,
+      gasLimit: gasLimit,
+      payer: address1
+    )
+
+    let txb = TransactionBuilder()
+    try txb.sign(tx: tx, prikey: prikey1!)
+
+    try! rpc!.send(rawTransaction: tx.serialize(), preExec: false, waitNotify: true).then {
+      XCTAssertEqual("SUCCESS", $0["Desc"].string!)
+      expect.fulfill()
+    }
+
+    wait(for: [expect], timeout: 10.0)
+  }
 }
 
 enum WebsocketRpcTestsError: Error {

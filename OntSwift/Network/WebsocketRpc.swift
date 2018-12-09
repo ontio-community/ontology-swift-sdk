@@ -38,6 +38,8 @@ public class WebsocketRpc {
   public var reconnectDelay = 10
   public var isReconnecting = false
 
+  public private(set) var waitingNotifications: [String: Pending] = [:]
+
   public init(url: String? = nil) {
     self.url = url == nil ? Constant.testOntUrl["SOCKET_URL"].string! : url!
     ws = WebSocket()
@@ -65,6 +67,12 @@ public class WebsocketRpc {
     return pending
   }
 
+  public func waitNotification(txHash: String) throws -> Promise<JSON> {
+    let pending = Pending()
+    waitingNotifications[txHash] = pending
+    return pending.deferred
+  }
+
   public func getNodeCount() throws -> Promise<JSON> {
     let data: [String: String] = [
       "Action": "getconnectioncount",
@@ -73,7 +81,7 @@ public class WebsocketRpc {
     return try send(data: data).deferred
   }
 
-  public func send(rawTransaction: Data, preExec: Bool = false) throws -> Promise<JSON> {
+  public func send(rawTransaction: Data, preExec: Bool = false, waitNotify: Bool = false) throws -> Promise<JSON> {
     var data = [
       "Action": "sendrawtransaction",
       "Version": "1.0.0",
@@ -83,7 +91,12 @@ public class WebsocketRpc {
     if preExec {
       data["PreExec"] = "1"
     }
-    return try send(data: data).deferred
+
+    if !waitNotify {
+      return try send(data: data).deferred
+    }
+
+    return try send(data: data).deferred.then { try self.waitNotification(txHash: $0["Result"].string!) }
   }
 
   public func getRawTransaction(txHash: String, json: Bool = false) throws -> Promise<JSON> {
@@ -338,6 +351,16 @@ public class WebsocketRpc {
       let reslut = JSON(parseJSON: json)
       if let id = reslut["Id"].string {
         resolve(pending: id, result: reslut)
+      } else if let action = reslut["Action"].string {
+        if action == "Notify" {
+          guard let txHash = reslut["Result", "TxHash"].string else {
+            return
+          }
+          if let pending = waitingNotifications[txHash] {
+            pending.deferred.fulfill(reslut)
+            waitingNotifications.removeValue(forKey: txHash)
+          }
+        }
       }
     }
   }
