@@ -51,7 +51,7 @@ class TransferTest: XCTestCase {
       tokenType: "ONT",
       from: from,
       to: to,
-      amount: BigInt(170),
+      amount: BigInt(300),
       gasPrice: gasPrice,
       gasLimit: gasLimit,
       payer: from

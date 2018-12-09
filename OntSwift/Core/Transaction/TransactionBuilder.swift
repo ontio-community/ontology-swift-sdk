@@ -31,7 +31,7 @@ public class TransactionBuilder {
     _ = b.push(rawbytes: params)
     _ = try b.push(hex: fnName.data(using: .utf8)!)
     _ = try b.push(address: contract)
-    _ = try b.push(num: 0)
+    _ = try b.push(int: 0)
     _ = try b.push(opcode: Opcode.SYSCALL)
     _ = try b.push(hex: Constant.nativeInvokeName.data(using: .utf8)!)
     let payload = InvokeCode()
@@ -87,7 +87,6 @@ public class TransactionBuilder {
   }
 
   public func makeInvokeTransaction(
-    fnName _: String,
     params: Data,
     contract: Address,
     gasPrice: String = "0",
@@ -101,10 +100,11 @@ public class TransactionBuilder {
     _ = b.push(rawbytes: params)
 
     _ = try b.push(opcode: Opcode.APPCALL)
-    _ = try b.push(address: contract)
+    _ = b.push(rawbytes: contract.toHexData())
 
     let payload = InvokeCode()
     payload.code = b.buf
+    tx.payload = payload
 
     tx.gasPrice = BigInt(gasPrice).int64!
     tx.gasLimit = BigInt(gasLimit).int64!
@@ -128,7 +128,6 @@ public class TransactionBuilder {
     let fn = AbiFunction(name: fnName, params: params)
     _ = try b.push(fn: fn)
     return try makeInvokeTransaction(
-      fnName: fnName,
       params: b.buf,
       contract: contract,
       gasPrice: gasPrice,

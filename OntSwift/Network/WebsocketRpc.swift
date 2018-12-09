@@ -346,11 +346,22 @@ public class WebsocketRpc {
     }
   }
 
+  func reject(pending id: String, error: Error) {
+    if let pending = pendings[id] {
+      pending.deferred.reject(error)
+      pendings.removeValue(forKey: id)
+    }
+  }
+
   public func webSocketMessage(_ data: Any) {
     if let json = data as? String {
       let reslut = JSON(parseJSON: json)
       if let id = reslut["Id"].string {
-        resolve(pending: id, result: reslut)
+        if reslut["Error"].int! == 0 {
+          resolve(pending: id, result: reslut)
+        } else {
+          reject(pending: id, error: WebsocketRpcError.serverSideError(reslut["Result"].string!))
+        }
       } else if let action = reslut["Action"].string {
         if action == "Notify" {
           guard let txHash = reslut["Result", "TxHash"].string else {
@@ -364,4 +375,8 @@ public class WebsocketRpc {
       }
     }
   }
+}
+
+public enum WebsocketRpcError: Error {
+  case serverSideError(String)
 }

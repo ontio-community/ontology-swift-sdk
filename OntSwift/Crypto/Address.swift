@@ -59,12 +59,16 @@ public class Address {
     return try Address.encode2b58(data: value)
   }
 
-  public func serialize() throws -> String {
+  public func serialize() -> String {
     return value.hexEncoded
   }
 
-  public func toHex() throws -> String {
+  public func toHex() -> String {
     return Data(value.reversed()).hexEncoded
+  }
+
+  public func toHexData() -> Data {
+    return Data(value.reversed())
   }
 
   public static func from(vmcode: Data) -> Address {

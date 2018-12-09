@@ -95,6 +95,8 @@ public class NativeVmParamsBuilder: ScriptBuilder {
         _ = try push(b: obj)
       case let obj as BigInt:
         _ = try push(bigint: obj)
+      case let obj as Address:
+        _ = try push(address: obj)
       case let obj as [String: AbiParameter]:
         let b = ScriptBuilder()
         _ = try b.push(map: obj)

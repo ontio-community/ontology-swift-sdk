@@ -9,13 +9,13 @@
 import Foundation
 
 public class OepState {
-  public let from: String
-  public let to: String
+  public let from: Address
+  public let to: Address
   public let amount: BigInt
 
-  public init(from: Address, to: Address, amount: BigInt) throws {
-    self.from = try from.toBase58()
-    self.to = try to.toBase58()
+  public init(from: Address, to: Address, amount: BigInt) {
+    self.from = from
+    self.to = to
     self.amount = amount
   }
 }

@@ -74,6 +74,9 @@
 		029ACABD21B687B000FC656F /* ScriptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACABC21B687B000FC656F /* ScriptBuilder.swift */; };
 		029ACABF21B6AA9400FC656F /* Opcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACABE21B6AA9400FC656F /* Opcode.swift */; };
 		029ACAC221B6AD4200FC656F /* ProgramBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029ACAC121B6AD4200FC656F /* ProgramBuilder.swift */; };
+		029CADBB21BD0AAB00D2BAAF /* OntidContractTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */; };
+		029CADBD21BD0F0500D2BAAF /* Oep4Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */; };
+		029CADBF21BD11C400D2BAAF /* Oep4Test.avm in Resources */ = {isa = PBXBuildFile; fileRef = 029CADBE21BD11C400D2BAAF /* Oep4Test.avm */; };
 		02A9921321B10AB8005CA392 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9921221B10AB8005CA392 /* Hash.swift */; };
 		02A9921621B117AF005CA392 /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9921521B117AF005CA392 /* Data+Hex.swift */; };
 		02C1D5DD21AF1E98001C3AAD /* OntSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1D5D321AF1E98001C3AAD /* OntSwift.framework */; };
@@ -194,6 +197,9 @@
 		029ACABC21B687B000FC656F /* ScriptBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptBuilder.swift; sourceTree = "<group>"; };
 		029ACABE21B6AA9400FC656F /* Opcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opcode.swift; sourceTree = "<group>"; };
 		029ACAC121B6AD4200FC656F /* ProgramBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramBuilder.swift; sourceTree = "<group>"; };
+		029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OntidContractTx.swift; sourceTree = "<group>"; };
+		029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oep4Test.swift; sourceTree = "<group>"; };
+		029CADBE21BD11C400D2BAAF /* Oep4Test.avm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Oep4Test.avm; sourceTree = "<group>"; };
 		02A9921221B10AB8005CA392 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		02A9921521B117AF005CA392 /* Data+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Hex.swift"; sourceTree = "<group>"; };
 		02A9921921B19EAE005CA392 /* scrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = scrypt.framework; path = Frameworks/scrypt.framework; sourceTree = "<group>"; };
@@ -418,6 +424,9 @@
 				028E93C921B80498004B9F09 /* WalletTests.swift */,
 				028E93CE21B8394A004B9F09 /* WebsocketRpcTests.swift */,
 				028E942A21BC3DA7004B9F09 /* TransferTest.swift */,
+				029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */,
+				029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */,
+				029CADBE21BD11C400D2BAAF /* Oep4Test.avm */,
 				028E942621BC0649004B9F09 /* TestWallet.swift */,
 				02C1D5E321AF1E98001C3AAD /* Info.plist */,
 			);
@@ -615,6 +624,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029CADBF21BD11C400D2BAAF /* Oep4Test.avm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,9 +753,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029CADBB21BD0AAB00D2BAAF /* OntidContractTx.swift in Sources */,
 				028E942B21BC3DA7004B9F09 /* TransferTest.swift in Sources */,
 				028E93CF21B8394A004B9F09 /* WebsocketRpcTests.swift in Sources */,
 				028E93C221B7B515004B9F09 /* AccountTests.swift in Sources */,
+				029CADBD21BD0F0500D2BAAF /* Oep4Test.swift in Sources */,
 				028E942721BC0649004B9F09 /* TestWallet.swift in Sources */,
 				0228D1EB21B3ACFF00565F51 /* CryptoTests.swift in Sources */,
 				028E93C421B7CC95004B9F09 /* IdentityTests.swift in Sources */,

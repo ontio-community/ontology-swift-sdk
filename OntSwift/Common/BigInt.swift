@@ -117,8 +117,7 @@ public class BigInt: CustomStringConvertible, Codable {
     let bitsPerWord = size * 8
     let count = 1 + ((bitLen + bitsPerWord - 1) / bitsPerWord)
     var b = [UInt8](repeating: UInt8(0), count: count)
-    __gmpz_export(&b, nil, 1, size, 1, 0, &m)
-
+    __gmpz_export(&b, nil, -1, size, 0, 0, &m)
     return Data(bytes: b)
   }
 

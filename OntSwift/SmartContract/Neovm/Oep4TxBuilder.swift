@@ -38,8 +38,8 @@ public class Oep4TxBuilder {
   ) throws -> Transaction {
     let b = TransactionBuilder()
     let fn = Oep4TxBuilder.Method.transfer.rawValue
-    let v1 = try Data.from(hex: from.serialize())!
-    let v2 = try Data.from(hex: to.serialize())!
+    let v1 = Data.from(hex: from.serialize())!
+    let v2 = Data.from(hex: to.serialize())!
     let v3 = amount
     let p1 = AbiParameter(name: "from", type: .byteArray, value: AbiParameter.Value.bytes(v1))
     let p2 = AbiParameter(name: "to", type: .byteArray, value: AbiParameter.Value.bytes(v2))
@@ -70,8 +70,7 @@ public class Oep4TxBuilder {
     let pb = NativeVmParamsBuilder()
     let params = try pb.pushCodeParams(objs: list).buf
     let txb = TransactionBuilder()
-    return try txb.makeNativeContractTx(
-      fnName: "",
+    return try txb.makeInvokeTransaction(
       params: params,
       contract: contract,
       gasPrice: gasPrice,
@@ -89,8 +88,8 @@ public class Oep4TxBuilder {
     payer: Address
   ) throws -> Transaction {
     let fn = Oep4TxBuilder.Method.approve.rawValue
-    let v1 = try Data.from(hex: owner.serialize())!
-    let v2 = try Data.from(hex: spender.serialize())!
+    let v1 = Data.from(hex: owner.serialize())!
+    let v2 = Data.from(hex: spender.serialize())!
     let v3 = amount
     let p1 = AbiParameter(name: "owner", type: .byteArray, value: AbiParameter.Value.bytes(v1))
     let p2 = AbiParameter(name: "spender", type: .byteArray, value: AbiParameter.Value.bytes(v2))
@@ -116,9 +115,9 @@ public class Oep4TxBuilder {
     payer: Address
   ) throws -> Transaction {
     let fn = Oep4TxBuilder.Method.transferFrom.rawValue
-    let v1 = try Data.from(hex: spender.serialize())!
-    let v2 = try Data.from(hex: from.serialize())!
-    let v3 = try Data.from(hex: to.serialize())!
+    let v1 = Data.from(hex: spender.serialize())!
+    let v2 = Data.from(hex: from.serialize())!
+    let v3 = Data.from(hex: to.serialize())!
     let v4 = amount
     let b = TransactionBuilder()
     let params: [AbiParameter] = [
@@ -139,8 +138,8 @@ public class Oep4TxBuilder {
 
   public func makeQueryAllowanceTx(owner: Address, spender: Address) throws -> Transaction {
     let fn = Oep4TxBuilder.Method.allowance.rawValue
-    let v1 = try Data.from(hex: owner.serialize())!
-    let v2 = try Data.from(hex: spender.serialize())!
+    let v1 = Data.from(hex: owner.serialize())!
+    let v2 = Data.from(hex: spender.serialize())!
     let params: [AbiParameter] = [
       AbiParameter(name: "owner", type: .byteArray, value: AbiParameter.Value.bytes(v1)),
       AbiParameter(name: "spender", type: .byteArray, value: AbiParameter.Value.bytes(v2)),
@@ -151,7 +150,7 @@ public class Oep4TxBuilder {
 
   public func makeQueryBalanceOfTx(addr: Address) throws -> Transaction {
     let fn = Oep4TxBuilder.Method.balanceOf.rawValue
-    let v = try Data.from(hex: addr.serialize())!
+    let v = Data.from(hex: addr.serialize())!
     let p = AbiParameter(name: "from", type: .byteArray, value: AbiParameter.Value.bytes(v))
     let b = TransactionBuilder()
     return try b.makeInvokeTransaction(fnName: fn, params: [p], contract: contract)
