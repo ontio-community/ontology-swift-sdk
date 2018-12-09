@@ -32,6 +32,19 @@ public class PublicKey: Key {
       buf.append(UInt8(parameters.curve.value))
       buf.append(raw)
     }
-    return buf.base64EncodedString()
+    return buf.hexEncoded
+  }
+
+  public static func from(bytes: Data, len: Int = 33) throws -> PublicKey {
+    let buf = BufferReader(buf: bytes)
+    if len == 33 {
+      // ecdsa
+      let raw = buf.forward(cnt: 33)
+      return try PublicKey(raw: raw, algorithm: KeyType.ecdsa, parameters: KeyParameters(curve: .p256))
+    }
+    let algo = try KeyType.from(Int(buf.readUInt8()))
+    let curve = try Curve.from(Int(buf.readUInt8()))
+    let raw = buf.forward(cnt: len - 2)
+    return try PublicKey(raw: raw, algorithm: algo, parameters: KeyParameters(curve: curve))
   }
 }

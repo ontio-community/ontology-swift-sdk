@@ -58,7 +58,7 @@ public class PrivateKey: Key, Encodable, Decodable {
     return try PrivateKey(raw: buf)
   }
 
-  public func sign(msg: Data, scheme: SignatureScheme?, publicKeyId _: String?) throws -> Signature {
+  public func sign(msg: Data, scheme: SignatureScheme?, publicKeyId _: String? = nil) throws -> Signature {
     let scheme = scheme ?? algorithm.defaultScheme
     if scheme == .eddsaSha512 {
       let pub = Eddsa.pub(pri: raw)

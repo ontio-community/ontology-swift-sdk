@@ -1,1 +1,3 @@
 github "SwiftyJSON/SwiftyJSON" "4.2.0"
+github "google/promises" "1.2.4"
+github "tidwall/SwiftWebSocket" "v2.7.0"
