@@ -11,9 +11,9 @@ import Foundation
 public class AbiParameter: Codable {
   public let name: String
   public let type: Typ
-  public private(set) var value: Value
+  public private(set) var value: Value?
 
-  public init(name: String, type: Typ, value: Value) {
+  public init(name: String, type: Typ, value: Value? = nil) {
     self.name = name
     self.type = type
     self.value = value
@@ -40,21 +40,14 @@ public class AbiParameter: Codable {
     name = try container.decode(String.self, forKey: .name)
     let typ = try container.decode(String.self, forKey: .type)
     type = try Typ.frome(name: typ)
-    if let val = try? container.decode(String.self, forKey: .value) {
-      value = Value.string(val)
-    } else if let val = try? container.decode(Int.self, forKey: .value) {
-      value = Value.int(val)
-    } else if let val = try? container.decode(Data.self, forKey: .value) {
-      value = Value.bytes(val)
-    }
-    throw AbiParameterError.unsupportedValue
+    value = try container.decodeIfPresent(Value.self, forKey: .value)
   }
 
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(name, forKey: .name)
     try container.encode(type.name, forKey: .type)
-    try container.encode(value, forKey: .value)
+    try container.encodeIfPresent(value, forKey: .value)
   }
 
   public enum Value: Codable {
@@ -63,6 +56,8 @@ public class AbiParameter: Codable {
     case long(BigInt)
     case bytes(Data)
     case bool(Bool)
+    case structure(Struct)
+    case map([String: AbiParameter])
 
     var assocValue: Any {
       switch self {
@@ -76,6 +71,26 @@ public class AbiParameter: Codable {
         return v
       case let .bytes(v):
         return v
+      case let .structure(v):
+        return v
+      case let .map(v):
+        return v
+      }
+    }
+
+    var bytes: Data {
+      switch self {
+      case let .string(v):
+        return v.data(using: .utf8)!
+      case let .int(v):
+        return BigInt(v).bytes
+      case let .long(v):
+        return v.bytes
+      case let .bool(v):
+        return BigInt(v ? 1 : 0).bytes
+      case let .bytes(v):
+        return v
+      default: return Data()
       }
     }
 
@@ -91,8 +106,9 @@ public class AbiParameter: Codable {
         self = .bool(v)
       } else if let v = try? container.decode(Data.self) {
         self = .bytes(v)
+      } else {
+        throw AbiParameterError.unsupportedValue
       }
-      throw AbiParameterError.unsupportedValue
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -108,6 +124,8 @@ public class AbiParameter: Codable {
         try container.encode(v)
       case let .bytes(v):
         try container.encode(v)
+      default:
+        try container.encode(Data())
       }
     }
   }
@@ -132,8 +150,8 @@ public class AbiParameter: Codable {
       case "IntArray": return .intArray
       case "LongArray": return .longArray
       case "Address": return .address
-      default:
-        throw AbiParameterError.unsupportedTypeName
+      // there is no type meta in abi compiled by the ont python compiler
+      default: return .byteArray
       }
     }
 
@@ -173,4 +191,77 @@ public class AbiParameter: Codable {
 
 public enum AbiParameterError: Error {
   case unsupportedTypeValue, unsupportedTypeName, unsupportedValue
+}
+
+public extension String {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .string, value: AbiParameter.Value.string(self))
+  }
+
+  public init?(hex: String) {
+    guard let data = Data.from(hex: hex) else {
+      return nil
+    }
+    self.init(data: data, encoding: .utf8)
+  }
+}
+
+public extension BigInt {
+  public convenience init(hex: String) {
+    let bytes = Data.from(hex: hex)!
+    self.init(bytes.reversed())
+  }
+}
+
+public extension Bool {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .boolean, value: AbiParameter.Value.bool(self))
+  }
+
+  public init(hex: String) {
+    let int = BigInt(hex: hex)
+    self = int == BigInt(1)
+  }
+}
+
+public extension Int {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .integer, value: AbiParameter.Value.int(self))
+  }
+
+  public init(hex: String) {
+    let int = BigInt(hex: hex)
+    self = int.int64!
+  }
+}
+
+public extension Address {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .address, value: AbiParameter.Value.bytes(toHexData()))
+  }
+}
+
+public extension Data {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .byteArray, value: AbiParameter.Value.bytes(self))
+  }
+}
+
+public extension Struct {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .structure, value: AbiParameter.Value.structure(self))
+  }
+
+  public convenience init(hex: String) {
+    let r = ScriptReader(buf: Data.from(hex: hex)!)
+    let s = r.readStruct()
+    self.init()
+    list = s.list
+  }
+}
+
+public extension Dictionary where Key == String, Value == AbiParameter {
+  public func abiParameter(name: String = "") -> AbiParameter {
+    return AbiParameter(name: name, type: .map, value: AbiParameter.Value.map(self))
+  }
 }

@@ -125,19 +125,19 @@ public class ScriptBuilder {
       switch val.type {
       case .byteArray:
         _ = try push(num: AbiParameter.Typ.byteArray.value())
-        guard let val = val.value.assocValue as? Data else {
+        guard let val = val.value!.assocValue as? Data else {
           throw ScriptBuilderError.invalidParams
         }
         _ = try push(hex: val)
       case .string:
         _ = try push(num: AbiParameter.Typ.byteArray.value())
-        guard let val = val.value.assocValue as? String else {
+        guard let val = val.value!.assocValue as? String else {
           throw ScriptBuilderError.invalidParams
         }
         _ = try push(hex: val.data(using: .utf8)!)
       case .integer:
         _ = try push(num: AbiParameter.Typ.integer.value())
-        guard let val = val.value.assocValue as? Int else {
+        guard let val = val.value!.assocValue as? Int else {
           throw ScriptBuilderError.invalidParams
         }
         let b = ScriptBuilder()
@@ -145,7 +145,7 @@ public class ScriptBuilder {
         _ = try push(hex: b.buf)
       case .long:
         _ = try push(num: AbiParameter.Typ.long.value())
-        guard let val = val.value.assocValue as? BigInt else {
+        guard let val = val.value!.assocValue as? BigInt else {
           throw ScriptBuilderError.invalidParams
         }
         let b = ScriptBuilder()
@@ -171,6 +171,9 @@ public class ScriptBuilder {
         let b = ScriptBuilder()
         _ = try b.push(varint: item)
         _ = try push(hex: b.buf)
+      case let item as Data:
+        _ = try push(num: AbiParameter.Typ.byteArray.value())
+        _ = try push(hex: item)
       default:
         throw ScriptBuilderError.invalidParams
       }

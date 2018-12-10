@@ -77,6 +77,11 @@
 		029CADBB21BD0AAB00D2BAAF /* OntidContractTx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */; };
 		029CADBD21BD0F0500D2BAAF /* Oep4Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */; };
 		029CADBF21BD11C400D2BAAF /* Oep4Test.avm in Resources */ = {isa = PBXBuildFile; fileRef = 029CADBE21BD11C400D2BAAF /* Oep4Test.avm */; };
+		029CADC121BD518B00D2BAAF /* Oep4Test.py in Resources */ = {isa = PBXBuildFile; fileRef = 029CADC021BD518B00D2BAAF /* Oep4Test.py */; };
+		029CADC321BDF00E00D2BAAF /* NeoVmTests.py in Resources */ = {isa = PBXBuildFile; fileRef = 029CADC221BDF00E00D2BAAF /* NeoVmTests.py */; };
+		029CADC521BDF0EF00D2BAAF /* NeoVmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029CADC421BDF0EF00D2BAAF /* NeoVmTests.swift */; };
+		029CADC821BDF27B00D2BAAF /* NeoVmTests.abi.json in Resources */ = {isa = PBXBuildFile; fileRef = 029CADC621BDF27B00D2BAAF /* NeoVmTests.abi.json */; };
+		029CADC921BDF27B00D2BAAF /* NeoVmTests.avm in Resources */ = {isa = PBXBuildFile; fileRef = 029CADC721BDF27B00D2BAAF /* NeoVmTests.avm */; };
 		02A9921321B10AB8005CA392 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9921221B10AB8005CA392 /* Hash.swift */; };
 		02A9921621B117AF005CA392 /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9921521B117AF005CA392 /* Data+Hex.swift */; };
 		02C1D5DD21AF1E98001C3AAD /* OntSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C1D5D321AF1E98001C3AAD /* OntSwift.framework */; };
@@ -200,6 +205,11 @@
 		029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OntidContractTx.swift; sourceTree = "<group>"; };
 		029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oep4Test.swift; sourceTree = "<group>"; };
 		029CADBE21BD11C400D2BAAF /* Oep4Test.avm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Oep4Test.avm; sourceTree = "<group>"; };
+		029CADC021BD518B00D2BAAF /* Oep4Test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Oep4Test.py; sourceTree = "<group>"; };
+		029CADC221BDF00E00D2BAAF /* NeoVmTests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = NeoVmTests.py; sourceTree = "<group>"; };
+		029CADC421BDF0EF00D2BAAF /* NeoVmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeoVmTests.swift; sourceTree = "<group>"; };
+		029CADC621BDF27B00D2BAAF /* NeoVmTests.abi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NeoVmTests.abi.json; sourceTree = "<group>"; };
+		029CADC721BDF27B00D2BAAF /* NeoVmTests.avm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NeoVmTests.avm; sourceTree = "<group>"; };
 		02A9921221B10AB8005CA392 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		02A9921521B117AF005CA392 /* Data+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Hex.swift"; sourceTree = "<group>"; };
 		02A9921921B19EAE005CA392 /* scrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = scrypt.framework; path = Frameworks/scrypt.framework; sourceTree = "<group>"; };
@@ -426,7 +436,12 @@
 				028E942A21BC3DA7004B9F09 /* TransferTest.swift */,
 				029CADBA21BD0AAB00D2BAAF /* OntidContractTx.swift */,
 				029CADBC21BD0F0500D2BAAF /* Oep4Test.swift */,
+				029CADC021BD518B00D2BAAF /* Oep4Test.py */,
 				029CADBE21BD11C400D2BAAF /* Oep4Test.avm */,
+				029CADC421BDF0EF00D2BAAF /* NeoVmTests.swift */,
+				029CADC221BDF00E00D2BAAF /* NeoVmTests.py */,
+				029CADC621BDF27B00D2BAAF /* NeoVmTests.abi.json */,
+				029CADC721BDF27B00D2BAAF /* NeoVmTests.avm */,
 				028E942621BC0649004B9F09 /* TestWallet.swift */,
 				02C1D5E321AF1E98001C3AAD /* Info.plist */,
 			);
@@ -624,7 +639,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029CADC121BD518B00D2BAAF /* Oep4Test.py in Resources */,
+				029CADC921BDF27B00D2BAAF /* NeoVmTests.avm in Resources */,
+				029CADC821BDF27B00D2BAAF /* NeoVmTests.abi.json in Resources */,
 				029CADBF21BD11C400D2BAAF /* Oep4Test.avm in Resources */,
+				029CADC321BDF00E00D2BAAF /* NeoVmTests.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				029CADBB21BD0AAB00D2BAAF /* OntidContractTx.swift in Sources */,
+				029CADC521BDF0EF00D2BAAF /* NeoVmTests.swift in Sources */,
 				028E942B21BC3DA7004B9F09 /* TransferTest.swift in Sources */,
 				028E93CF21B8394A004B9F09 /* WebsocketRpcTests.swift in Sources */,
 				028E93C221B7B515004B9F09 /* AccountTests.swift in Sources */,

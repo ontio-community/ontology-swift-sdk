@@ -81,6 +81,72 @@ public class NativeVmParamsBuilder: ScriptBuilder {
     return self
   }
 
+  public override func push(map: [String: AbiParameter]) throws -> Self {
+    _ = try push(opcode: Opcode.NEWMAP)
+    _ = try push(opcode: Opcode.TOALTSTACK)
+    for (key, val) in map {
+      _ = try push(opcode: Opcode.DUPFROMALTSTACK)
+      _ = try push(hex: key.data(using: .utf8)!)
+      _ = try push(param: val)
+      _ = try push(opcode: Opcode.SETITEM)
+    }
+    _ = try push(opcode: Opcode.FROMALTSTACK)
+    return self
+  }
+
+  public func push(param: AbiParameter) throws -> Self {
+    switch param.type {
+    case .byteArray:
+      guard let val = param.value!.assocValue as? Data else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(hex: val)
+    case .string:
+      guard let val = param.value!.assocValue as? String else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(hex: val.data(using: .utf8)!)
+    case .boolean:
+      guard let val = param.value!.assocValue as? Bool else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(b: val)
+      _ = try push(opcode: Opcode.PUSH0)
+      _ = try push(opcode: Opcode.BOOLOR)
+    case .map:
+      guard let val = param.value!.assocValue as? [String: AbiParameter] else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(map: val)
+    case .array:
+      guard let val = param.value!.assocValue as? [AbiParameter] else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      for p in val {
+        _ = try push(param: p)
+      }
+      _ = try push(int: val.count)
+      _ = try push(opcode: Opcode.PACK)
+    case .integer:
+      guard let val = param.value!.assocValue as? Int else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(int: val)
+      _ = try push(opcode: Opcode.PUSH0)
+      _ = try push(opcode: Opcode.ADD)
+    case .long:
+      guard let val = param.value!.assocValue as? BigInt else {
+        throw NativeVmParamsBuilderError.invalidParams
+      }
+      _ = try push(bigint: val)
+      _ = try push(opcode: Opcode.PUSH0)
+      _ = try push(opcode: Opcode.ADD)
+    default:
+      throw NativeVmParamsBuilderError.unsupportedParamType
+    }
+    return self
+  }
+
   public func pushCodeParams(objs: [Any]) throws -> Self {
     let objs = objs.reversed()
     for obj in objs {
@@ -98,13 +164,11 @@ public class NativeVmParamsBuilder: ScriptBuilder {
       case let obj as Address:
         _ = try push(address: obj)
       case let obj as [String: AbiParameter]:
-        let b = ScriptBuilder()
-        _ = try b.push(map: obj)
-        _ = try b.push(hex: b.buf)
+        _ = try push(map: obj)
       case let obj as Struct:
         let b = ScriptBuilder()
         _ = try b.push(structure: obj)
-        _ = try b.push(hex: b.buf)
+        _ = try push(hex: b.buf)
       case let obj as [Any]:
         _ = try pushCodeParams(objs: obj)
         _ = try push(int: obj.count)
@@ -123,17 +187,27 @@ public class NativeVmParamsBuilder: ScriptBuilder {
     for p in fn.parameters {
       switch p.type {
       case .string:
-        guard let val = p.value.assocValue as? String else {
+        guard let val = p.value!.assocValue as? String else {
           throw NativeVmParamsBuilderError.invalidParams
         }
         params.append(val.data(using: .utf8)!)
       case .long:
-        guard let val = p.value.assocValue as? BigInt else {
+        guard let val = p.value!.assocValue as? BigInt else {
+          throw NativeVmParamsBuilderError.invalidParams
+        }
+        params.append(val)
+      case .structure:
+        guard let val = p.value!.assocValue as? Struct else {
+          throw NativeVmParamsBuilderError.invalidParams
+        }
+        params.append(val)
+      case .map:
+        guard let val = p.value!.assocValue as? [String: AbiParameter] else {
           throw NativeVmParamsBuilderError.invalidParams
         }
         params.append(val)
       default:
-        params.append(p.value.assocValue)
+        params.append(p.value!.bytes)
       }
     }
     list.append(params)
