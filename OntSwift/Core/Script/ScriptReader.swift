@@ -63,6 +63,30 @@ public class ScriptReader: BufferReader {
     let buf = readVarBytes()
     return BigInt(buf)
   }
+
+  public func readNullTerminated() -> Data {
+    var data = Data()
+    while true {
+      let byte = readUInt8()
+      if byte == 0 {
+        break
+      }
+      data.append(byte)
+    }
+    return data
+  }
+
+  public func readStruct() -> Struct {
+    _ = readOpcode()
+    let ret = Struct()
+    let len = readUInt8()
+    for _ in 0 ..< len {
+      let type = readUInt8()
+      let bytes = readVarBytes()
+      ret.list.append(Struct.RawField(type: Int(type), bytes: bytes))
+    }
+    return ret
+  }
 }
 
 enum ScriptReaderError: Error {

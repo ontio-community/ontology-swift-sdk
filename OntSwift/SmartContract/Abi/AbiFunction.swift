@@ -59,7 +59,7 @@ public class AbiFunction: Codable {
   public required convenience init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let name = try container.decode(String.self, forKey: .name)
-    let returnType = try container.decode(String.self, forKey: .returnType)
+    let returnType = try container.decodeIfPresent(String.self, forKey: .returnType) ?? "any"
 
     var parameters: [AbiParameter] = []
     var parametersContainer = try container.nestedUnkeyedContainer(forKey: .parameters)
