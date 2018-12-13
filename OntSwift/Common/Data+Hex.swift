@@ -12,11 +12,11 @@ import Foundation
 public extension Data {
   public struct HexOptions: OptionSet {
     public let rawValue: Int
-    
+
     public init(rawValue: Int) {
       self.rawValue = rawValue
     }
-    
+
     static let upperCase = HexOptions(rawValue: 1 << 0)
   }
 

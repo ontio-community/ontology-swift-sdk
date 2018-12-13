@@ -193,7 +193,7 @@ public class BigInt: CustomStringConvertible, Codable {
   }
 }
 
-public extension BigInt: Equatable, Comparable {
+extension BigInt: Equatable, Comparable {
   public static func + (_ a: BigInt, _ b: BigInt) -> BigInt {
     return BigInt.add(a, b)
   }
