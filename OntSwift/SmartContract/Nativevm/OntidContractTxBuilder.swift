@@ -12,7 +12,7 @@ public class OntidContractTxBuilder {
   public static let ontidContract = "0000000000000000000000000000000000000003"
 
   public init() {}
-  
+
   public func buildRegisterOntidTx(
     ontid: Data,
     pubkey: PublicKey,
