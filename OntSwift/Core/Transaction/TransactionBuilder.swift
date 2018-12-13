@@ -9,6 +9,8 @@
 import Foundation
 
 public class TransactionBuilder {
+  public init() {}
+
   public func sign(tx: Transaction, prikey: PrivateKey, scheme: SignatureScheme? = nil) throws {
     let sig = try TxSignature.create(data: tx, pri: prikey, scheme: scheme)
     tx.sigs = [sig]

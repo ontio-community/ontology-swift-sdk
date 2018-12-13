@@ -11,6 +11,8 @@ import Foundation
 public class ScriptBuilder {
   public internal(set) var buf: Data = Data()
 
+  public init() {}
+
   public func push(num: Int, len: Int = 1, endian: Endian = .big) throws -> Self {
     switch len {
     case 1:
@@ -42,7 +44,7 @@ public class ScriptBuilder {
     } else if varint < 0xFFFF {
       _ = try push(num: 0xFD)
       _ = try push(num: varint, len: 2, endian: .little)
-    } else if varint < 0xFFFF_FFFF {
+    } else if varint < (0xFFFF_FFFF as UInt) {
       _ = try push(num: 0xFE)
       _ = try push(num: varint, len: 4, endian: .little)
     } else {

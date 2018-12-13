@@ -12,7 +12,7 @@ public enum Endian {
   case big, little, native
 }
 
-extension Data {
+public extension Data {
   public mutating func append(_ newElement: UInt16, endian: Endian = .big) {
     if endian == .little {
       append(UInt8(newElement & 0xFF))

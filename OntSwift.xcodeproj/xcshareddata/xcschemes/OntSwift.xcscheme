@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0202CE9421AF5786006D7C73"
-               BuildableName = "OntSwiftTestsHost.app"
-               BlueprintName = "OntSwiftTestsHost"
+               BlueprintIdentifier = "02C1D5D221AF1E98001C3AAD"
+               BuildableName = "OntSwift.framework"
+               BlueprintName = "OntSwift"
                ReferencedContainer = "container:OntSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "02C1D5DB21AF1E98001C3AAD"
-               BuildableName = "OntSwiftTests.xctest"
-               BlueprintName = "OntSwiftTests"
-               ReferencedContainer = "container:OntSwift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0202CE9421AF5786006D7C73"
-            BuildableName = "OntSwiftTestsHost.app"
-            BlueprintName = "OntSwiftTestsHost"
-            ReferencedContainer = "container:OntSwift.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0202CE9421AF5786006D7C73"
-            BuildableName = "OntSwiftTestsHost.app"
-            BlueprintName = "OntSwiftTestsHost"
+            BlueprintIdentifier = "02C1D5D221AF1E98001C3AAD"
+            BuildableName = "OntSwift.framework"
+            BlueprintName = "OntSwift"
             ReferencedContainer = "container:OntSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0202CE9421AF5786006D7C73"
-            BuildableName = "OntSwiftTestsHost.app"
-            BlueprintName = "OntSwiftTestsHost"
+            BlueprintIdentifier = "02C1D5D221AF1E98001C3AAD"
+            BuildableName = "OntSwift.framework"
+            BlueprintName = "OntSwift"
             ReferencedContainer = "container:OntSwift.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

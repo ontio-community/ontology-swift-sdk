@@ -12,6 +12,8 @@ public class OntAssetTxBuilder {
   public static let ontContract = "0000000000000000000000000000000000000001"
   public static let ongContract = "0000000000000000000000000000000000000002"
 
+  public init() {}
+
   public func tokenContract(tokenType: String) throws -> Address {
     if tokenType == Constant.tokenType["ONT"].string! {
       return try Address(value: OntAssetTxBuilder.ontContract)
