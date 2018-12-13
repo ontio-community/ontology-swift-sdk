@@ -96,7 +96,7 @@ public class ProgramBuilder: ScriptBuilder {
       _ = try push(num: Opcode.PUSHDATA1).push(num: len)
     } else if len < 0x10000 {
       _ = try push(num: Opcode.PUSHDATA2).push(num: len, len: 2, endian: .little)
-    } else if len < (0x1_0000_0000 as UInt) {
+    } else if len < (0x1_0000_0000 as Int64) {
       _ = try push(num: Opcode.PUSHDATA4).push(num: len, len: 4, endian: .little)
     } else {
       throw ProgramBuilderError.invalidBytesLen
