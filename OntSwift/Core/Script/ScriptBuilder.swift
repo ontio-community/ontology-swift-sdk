@@ -10,6 +10,8 @@ import Foundation
 
 public class ScriptBuilder {
   public internal(set) var buf: Data = Data()
+  
+  public init() {}
 
   public func push(num: Int, len: Int = 1, endian: Endian = .big) throws -> Self {
     switch len {
