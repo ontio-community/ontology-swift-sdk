@@ -42,7 +42,7 @@ public class ScriptBuilder {
     } else if varint < 0xFFFF {
       _ = try push(num: 0xFD)
       _ = try push(num: varint, len: 2, endian: .little)
-    } else if varint < 0xFFFF_FFFF {
+    } else if varint < UInt(0xFFFF_FFFF) {
       _ = try push(num: 0xFE)
       _ = try push(num: varint, len: 4, endian: .little)
     } else {
