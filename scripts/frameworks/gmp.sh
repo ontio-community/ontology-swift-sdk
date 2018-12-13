@@ -100,7 +100,7 @@ build_for() {
   make distclean
 
   ./configure --prefix="${prefix}" CC="${CC}" ${host} --disable-assembly --enable-static --disable-shared
-  make -j `sysctl -n hw.logicalcpu_max`
+  make CC="${CC}" -j `sysctl -n hw.logicalcpu_max`
   make install
 }
 
