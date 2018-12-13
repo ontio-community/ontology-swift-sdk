@@ -16,19 +16,22 @@ It supports:
 
 ### Carthage
 
-Update your `Cartfile` to include below lines:
-
 ```
-github "SwiftyJSON/SwiftyJSON" ~> 4.0
-github "google/promises"
-github "tidwall/SwiftWebSocket"
-
-github "ontio-community/ontology-swift-sdk"
+github "ontio-community/ontology-swift-sdk" "master"
 ```
 
 ```swift
 import OntSwift
 ```
+
+> One of the reasons about fail to build this SDK is your network is unaccessible for some resources.
+> SDK depends on some C libs and will download their source code and build them automatically, make sure your 
+> network is accessible for those resources in `scripts/frameworks/*.sh`.
+>
+> You can use below command to list them all:
+> 
+> `grep -E "(git\sclone|curl\s-L)\shttps?" ./scripts/frameworks/*.sh`
+>   
 
 ## For Developer
 
