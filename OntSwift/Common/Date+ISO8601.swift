@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Date {
-  var iso8601: String {
+public extension Date {
+  public var iso8601: String {
     if #available(iOS 11.0, *) {
       let formatter = ISO8601DateFormatter()
       formatter.formatOptions.insert(.withInternetDateTime)
