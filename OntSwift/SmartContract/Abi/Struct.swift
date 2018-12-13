@@ -10,7 +10,7 @@ import Foundation
 
 public class Struct {
   public var list: [Any] = []
-  
+
   public init() {}
 
   public func add(params: Any...) {
