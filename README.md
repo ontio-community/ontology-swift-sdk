@@ -88,3 +88,5 @@ Run tests via cli:
 ```bash
 ./run-tests.sh
 ```
+
+[文档](./doc/cn)
