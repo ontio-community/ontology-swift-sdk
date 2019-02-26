@@ -60,14 +60,16 @@ $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBLPromises.framework
 $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftWebSocket.framework
 ```
 
-> One of the reasons about fail to build this SDK is your network is unaccessible for some resources.
-> SDK depends on some C libs and will download their source code and build them automatically, make sure your 
-> network is accessible for those resources in `scripts/frameworks/*.sh`.
->
-> You can use below command to list them all:
-> 
-> `grep -E "(git\sclone|curl\s-L)\shttps?" ./scripts/frameworks/*.sh`
->   
+SDK depends on some C libs and it will download and compile the source code of those C libs automatically by
+adding a new build phase `Build Libraries` which runs the build script `scripts/frameworks/build_all.sh`. It will
+take some time to finish the build process.
+
+Please keep your network is accessible for downloading those C libs. Below is a command to list all the URLs of those C libs: 
+
+```bash
+grep -E "(git\sclone|curl\s-L)\shttps?" ./scripts/frameworks/*.sh
+```
+
 
 ## Usage
 
